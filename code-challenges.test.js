@@ -59,37 +59,107 @@ describe("codedMSG", () => {
 
 // b) Create the function that makes the test pass.
 
-const codedMSG = (string) => {
+// const codedMSG = (string) => {
 
-    // Converts string into an array
-    // uses .map() to iterate through that array
-    return string.split("").map(value => {
+//     // Converts string into an array
+//     // uses .map() to iterate through that array
+//     return string.split("").map(value => {
 
-        // converts value to lower case and compares it to the code requirement
-         if (value.toLowerCase() === "a"){
-            // Replaces value with the corresponding code number
-            return value = "4"
-         }
-         else if (value.toLowerCase() === "e") {
-            return value = "3"
-         }
-         else if (value.toLowerCase() === "i") {
-            return value = "1"
-         }
-         else if (value.toLowerCase() === "o") {
-            return value = "0"
-         }
-         else {
-            return value
-         }        
-     }).join("") // Converts the array back in to a string before returning
+//         // converts value to lower case and compares it to the code requirement
+//          if (value.toLowerCase() === "a"){
+//             // Replaces value with the corresponding code number
+//             return value = "4"
+//          }
+//          else if (value.toLowerCase() === "e") {
+//             return value = "3"
+//          }
+//          else if (value.toLowerCase() === "i") {
+//             return value = "1"
+//          }
+//          else if (value.toLowerCase() === "o") {
+//             return value = "0"
+//          }
+//          else {
+//             return value
+//          }        
+//      }).join("") // Converts the array back in to a string before returning
   
- }
+//  }
 //  Success
 // PASS  ./challenges.test.js
 // codedMSG
 //   ✓ takes in a string and returns a string with a coded message. (1 ms)
 
+// Refactor 1
+// Pseudo Code:
+  // Process:
+    // Create temporary string variable and assign it ""
+    // Create object with keys of the characters to be replaced and their values what they are replaced with
+    // Iterate through the string (possible tool: for loop)
+    // Compare the current character to the keys in the 'codeRepl' object (possible tool: ternary operator)
+    // Add code replacement or original character to 'tempStr'
+    // Return 'tempStr
+  // Expected Output: "L4ck4d41s1c4l"
+                   // "G0bbl3dyg00k"
+                   // "3cc3ntr1c"
+
+
+// const codedMSG = (string) => {
+
+//     let tempStr = ""
+//     let codeRepl = {"a": 4, "e": 3, "i": 1, "o": 0}
+ 
+//     // Iterates through the string
+//     for (let i = 0; i < string.length; i++) {
+ 
+//         // Compares current string character to 'codeRepl' keys
+//         // Adds coded replacement to 'tempStr' if keys match
+//         // Adds original character to 'tempStr' if no matches
+//         (Object.keys(codeRepl)).includes(string[i].toLowerCase()) ? tempStr += codeRepl[string[i].toLowerCase()] : tempStr += string[i]
+
+//      }
+ 
+//      return tempStr
+   
+//  }
+
+//  Success
+// PASS  ./code-challenges.test.js
+// codedMSG
+//   ✓ takes in a string and returns a string with a coded message. (2 ms)
+
+// Refactor 2
+// Pseudo Code:
+  // Process:
+    // Remove 'tempStr'
+    // Convert 'string' to an array (possible tool: .split())
+    // Replace for loop with .map
+    // Return completed coded string (possible tool: .join())
+  // Expected Output: "L4ck4d41s1c4l"
+                   // "G0bbl3dyg00k"
+                   // "3cc3ntr1c"
+
+const codedMSG = (string) => {
+
+    let codeRepl = {"a": 4, "e": 3, "i": 1, "o": 0}
+
+    // Converts 'string' to an array
+    // Iterates through the array
+    return string.split("").map(value => {
+
+        // Compares each 'value' to keys in 'codeRepl' and returns the associated value if included
+        // Returns 'value' if not
+        return (Object.keys(codeRepl).includes(value.toLowerCase())) ? codeRepl[value.toLowerCase()] : value
+
+    // Converts array back to a string 
+    }).join("")
+
+}
+
+// Success
+// PASS  ./code-challenges.test.js
+// codedMSG
+//   ✓ takes in a string and returns a string with a coded message. (2 ms)
 
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
@@ -154,6 +224,8 @@ const wordContains = (string, array) => {
 // wordContains
 //   ✓ takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
 
+// No refactor necessary
+
 
 
 
@@ -217,38 +289,38 @@ describe("fullHouse" , () => {
 
 // b) Create the function that makes the test pass.
 
-const fullHouse = (array) => {
+// const fullHouse = (array) => {
 
-  let firEle = array[0]
-  let secEle = 0
-  let count1 = 0
-  let count2 = 0
+//   let firEle = array[0]
+//   let secEle = 0
+//   let count1 = 0
+//   let count2 = 0
 
-  // .filter() determines if value equals firEle
-  array.filter(value => {
-    // Increments count1 if true
-    // Assigns value to secEle
-    return value === firEle ? count1++ : secEle = value
-  })
+//   // .filter() determines if value equals firEle
+//   array.filter(value => {
+//     // Increments count1 if true
+//     // Assigns value to secEle
+//     return value === firEle ? count1++ : secEle = value
+//   })
 
-  // .filter() determines if value equals secEle
-  array.filter(value => {
-    // Increments count2 if true
-    return value === secEle ? count2++ : null
-  })
+//   // .filter() determines if value equals secEle
+//   array.filter(value => {
+//     // Increments count2 if true
+//     return value === secEle ? count2++ : null
+//   })
 
-  // Checks to see if the counts match the required numbers for a full house
-  if(count1 === 3 && count2 === 2){
-    return true
-  }
-  else if(count1 === 2 && count2 == 3) {
-    return true
-  }
-  else {
-    return false
-  }
+//   // Checks to see if the counts match the required numbers for a full house
+//   if(count1 === 3 && count2 === 2){
+//     return true
+//   }
+//   else if(count1 === 2 && count2 == 3) {
+//     return true
+//   }
+//   else {
+//     return false
+//   }
 
-}
+// }
 
 // Success
 // PASS  ./challenges.test.js
@@ -258,3 +330,101 @@ const fullHouse = (array) => {
 //   ✓ takes in an array of words and a single letter and returns an array of all the words containing that particular letter. (1 ms)
 // fullHouse
 //   ✓ takes in an array of 5 numbers and determines whether or not the array is a 'full house'.
+
+// Refactor 1
+// Pseudo Code:
+  // Process:
+    // Removed temporary variables
+    // Create temporary object 'repititions'
+    // Iterate through the array (possible tool: .map())
+    // Check to see if the current value already exists in 'repititions' (possible tool: conditionals)
+        // If yes, increment the value of the key
+        // If no, add 'value' as a key and set the key value to 1
+    // Check to see if any value in 'repititions' is equal to 3 (possible tool: conditionals)
+        // If yes, return true
+        // If no, return false
+  // Expected Output: true
+                   // false
+                   // false
+                   // true
+
+
+// const fullHouse = (array) => {
+
+//     // Temporary object
+//     let repititions = {}
+
+//     // Iterates through the given array
+//     array.map(value => {
+
+//         // Checks to see if current value exists in 'repititions' object
+//         if(repititions[value]) {
+
+//             // Increment the value associated with that key
+//             repititions[value]++
+//         }
+//         else {
+
+//             // Add the current value as a key in 'repititions' object
+//             // Set the key value to 1
+//             repititions[value] = 1
+//         }
+//     })
+
+//     // Check if any value in 'repititions' object is equal to 3
+//     if (Object.values(repititions).includes(3)) {
+//         return true
+//     }
+//     else {
+//         return false
+//     }
+
+// }
+
+// Success
+// PASS  ./code-challenges.test.js
+// codedMSG
+//   ✓ takes in a string and returns a string with a coded message. (1 ms)
+// wordContains
+//   ✓ takes in an array of words and a single letter and returns an array of all the words containing that particular letter. (1 ms)
+// fullHouse
+//   ✓ takes in an array of 5 numbers and determines whether or not the array is a 'full house'.
+
+// Refactor 2
+// Pseudo Code:
+  // Process:
+    // Replace conditional statements with ternary operators
+  // Expected Output: true
+                   // false
+                   // false
+                   // true
+
+const fullHouse = (array) => {
+
+    // Temporary object
+    let repititions = {}
+
+    // Iterates through the give array
+    array.map(value => {
+
+        // Checks to see if current value exists in 'repititions' object
+        // If yes, increment the value associated with that key
+        // If no, add the current value as a key in 'repititions' object
+            // Set the key value to 1
+        repititions[value] ? repititions[value]++ : repititions[value] = 1
+
+    })
+
+    // Check if any value in 'repititions' object is equal to 3
+    return Object.values(repititions).includes(3) ? true : false
+
+}
+
+// Success
+// PASS  ./code-challenges.test.js
+// codedMSG
+//   ✓ takes in a string and returns a string with a coded message. (1 ms)
+// wordContains
+//   ✓ takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
+// fullHouse
+//   ✓ takes in an array of 5 numbers and determines whether or not the array is a 'full house'. (1 ms)
