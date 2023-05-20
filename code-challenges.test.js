@@ -372,7 +372,7 @@ describe("fullHouse" , () => {
 //     })
 
 //     // Check if any value in 'repititions' object is equal to 3
-//     if (Object.values(repititions).includes(3)) {
+//     if (Object.values(repititions).includes(3) && Object.values(repititions).includes(2)) {
 //         return true
 //     }
 //     else {
@@ -415,8 +415,8 @@ const fullHouse = (array) => {
 
     })
 
-    // Check if any value in 'repititions' object is equal to 3
-    return Object.values(repititions).includes(3) ? true : false
+    // Check if there are two values in 'repititions' object that equal 3 and 2
+    return Object.values(repititions).includes(3) && Object.values(repititions).includes(2) ? true : false
 
 }
 
